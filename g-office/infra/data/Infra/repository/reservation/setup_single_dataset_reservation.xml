@@ -1,0 +1,8 @@
+<dataset>
+	<m_user user_id="sample1" user_name="user1" password="pass1" />
+	<m_facility facility_id="1" name="施設名1" capacity="100"
+		facility_type_id="1" insert_date="[SYSDATE]" user_id="user" />
+	<m_reservation reservation_id="1"
+		start_time="2021-04-05 09:00:00.0" end_time="2021-04-05 12:00:00"
+		facility_id="1" insert_date="2021-04-01 12:00:00" user_id="sample1" />
+</dataset>

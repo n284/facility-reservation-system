@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/login/reset.css">
+<link rel="stylesheet" href="/css/login/login.css">
+<title>ログイン</title>
+</head>
+<body class="align">
+
+	<div class="grid">
+
+		<div id="login">
+
+			<h2>Login</h2>
+
+			<form th:action="@{/login}" method="POST">
+
+				<fieldset>
+
+				<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+					th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+					class="error">ログインエラーメッセージ</p>
+
+					<p>
+						<label for="id">Id</label>
+					</p>
+
+					<p>
+						<input type="text" id="id" name="username" placeholder="Login Id">
+					</p>
+
+					<p>
+						<label for="password">Password</label>
+					</p>
+					<p>
+						<input type="password" id="password" name="password"
+							placeholder="password">
+					</p>
+
+					<p class="login-button">
+						<input type="submit" value="Login">
+						<input type="reset" value="Clear">
+					</p>
+
+				</fieldset>
+
+				<br>
+				<br>
+
+			</form>
+
+		</div>
+		<!-- end login -->
+
+	</div>
+
+</body>
+</html>

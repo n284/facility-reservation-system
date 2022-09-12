@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/button.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/error.css}">
+<!-- jQueryの読み込み -->
+<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<!-- jQueryUiの読み込み -->
+<script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<link rel="stylesheet"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+
+<title>権限エラー</title>
+</head>
+<body>
+
+	<div th:replace="util/fragments::header_block(|不正アクセスエラー画面|)"></div>
+	<div id="container">
+
+		<!-- <div id="base" style="margin:auto;"> -->
+		<!-- <jsp:include page="/WEB-INF/views/header/header.jsp" flush="true" /> -->
+<div class="message">
+
+		<div class="error-message">不正エラーが発生しました</div>
+
+		<div class="error-message">ログインしてください</div>
+</div>
+			<div class="bottombutton">
+				<a th:href="@{/login}" class="btn-animation-menu"><span>ログイン画面へ戻る</span></a>
+			</div>
+
+
+		<div id="footer">
+			<p class="copyright">(C) 2020 Ginga Software, All Rights
+				Reserved..</p>
+		</div>
+	</div>
+
+	<input type="hidden" id="detail-message" th:value="${detail}" />
+
+	<!-- jsファイルの読み込み -->
+	<script type="text/javascript" th:src="@{/js/user.js}"></script>
+
+</body>
+</html>

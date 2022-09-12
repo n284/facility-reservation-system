@@ -1,0 +1,160 @@
+
+@charset "UTF-8";
+
+.calendar-header{
+	text-align:center;
+	width:90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	margin-bottom: 40px;
+}
+.calendar-header a{
+	margin-left:10px;
+	margin-right: 10px;
+}
+
+.calendar-header p{
+
+	margin-top:30px;
+	margin-bottom: 30px;
+
+}
+
+.calendar-header p input{
+
+	margin-left:100px;
+}
+.calendar-page{
+	text-align:center;
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+
+}
+
+.calendar-page table{
+	table-layout: fixed;
+	border-collapse:collapse;
+	border-spacing: 0;
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+}
+.calendar-page table td{
+	vertical-align:top;
+	text-align: center;
+
+}
+
+.calendar-page table th{
+	background-color: #f6f6f6;
+	color:black;
+
+}
+
+.calendar-page table tr th.sunday{
+	background-color:#f09199;
+	color:red;
+}
+
+.calendar-page table tr td.sunday{
+	background-color:#fbe1e2;
+}
+
+.calendar-page table  tr td.sunday:hover{
+	background-color: #d4faff;
+}
+
+.calendar-page table  tr th.saturday{
+	background-color:#90b0f0;
+	color:blue;
+}
+
+.calendar-page table  tr td.saturday{
+	background-color:#d2dff9;
+}
+
+.calendar-page table  tr td.saturday:hover{
+	background-color: #d4faff;
+}
+
+.another-month{
+	background-color: #dcdcdc;
+}
+
+.add{
+	background-color:#61b2b2;
+	color:#dcdcdc;
+}
+
+.date-data{
+	vertical-align:top;
+	text-align: center;
+}
+.date{
+  font-weight: bold;
+
+}
+
+.add {
+  display: inline-block;
+  text-decoration: none;
+  background: #61b2b2;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.add:hover {
+  background: #f0574f;
+  font-weight: bold;
+}
+
+.detail{
+	text-align:center;
+	width:50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+
+}
+
+.label-big{
+	font-size: 30px;
+	vertical-align:top;
+}
+
+.label-mid{
+	font-size: 24px;
+}
+.info{
+	font-size: 18px;
+}
+.detail ol{
+	text-align: center;
+	width:30%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+}
+
+
+.detail select{
+	height:30px;
+	width:50px;
+	margin-left: 30px;
+	margin-bottom: 30px;
+	vertical-align:top;
+	font-size:24px;
+	border:1px;
+}
+
+

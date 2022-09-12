@@ -1,0 +1,15 @@
+<dataset>
+	<m_user user_id="system" user_name="システム管理者" password="pass1" />
+	<m_user user_id="user" user_name="ユーザー" password="pass2" />
+	<m_role role_id="admin" role_name="ROLE_ADMIN" />
+	<m_role role_id="general" role_name="ROLE_GENERAL" />
+	<t_user_role id="1" user_id="system" role_id="admin" />
+	<t_user_role id="2" user_id="system" role_id="general" />
+	<m_facility  facility_id="1" name="施設名1" capacity="100" facility_type_id="1" insert_date="[SYSDATE]" user_id="user" />
+	<m_facility  facility_id="2" name="施設名2" capacity="100" facility_type_id="2" insert_date="[SYSDATE+1]" user_id="user" />
+	<m_facility  facility_id="3" name="施設名3" capacity="100" facility_type_id="3" insert_date="[SYSDATE+2]" user_id="user" />
+	<m_facility_type facility_type_id="1" name="施設種別1" insert_date="[SYSDATE]" user_id="user" fg_delete="0"/>
+	<m_facility_type facility_type_id="2" name="施設種別2" insert_date="[SYSDATE]" user_id="user" fg_delete="0"/>
+	<m_facility_type facility_type_id="3" name="施設種別3" insert_date="[SYSDATE]" user_id="user" fg_delete="0"/>
+	
+</dataset>

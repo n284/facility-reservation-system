@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/main.css}">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/list.css}">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/button.css}">
+		<script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+		<script th:src="@{/js/facilityreservation/list/list.js}" ></script>
+		<title>予約施設一覧画面</title>
+	</head>
+	<body>
+
+		<div th:replace="util/fragments::header_block(|予約施設一覧画面|)"></div>
+
+		<div id="container">
+			<div class="cp_ipselect cp_sl01">
+				<select class="type">
+					<option value="0" >すべて</option>
+					<th:block th:each="facilityType, status : ${facilityReservationListForm.facilityTypeFormList}">
+						<option th:value="${facilityType.facilityTypeId}" th:text="${facilityType.name}"></option>
+					</th:block>
+				</select>
+			</div>
+
+			<div class="col_3" align="center" >
+				<th:block th:each="facility, status : ${facilityReservationListForm.facilityFormList}">
+					<div class="r-col">
+						<a th:href="@{/facilityreservation/calendar/{facilityId}(facilityId=${facility.facilityId})}" th:text="${facility.name}"></a>
+						<p th:text="(|定員${facility.capacity}|)"></p>
+					</div>
+				</th:block>
+			</div>
+			<div class="bottom" align="center">
+				<a th:href="@{/menu}" class="btn-animation-menu"><span>メニューへ戻る</span></a>
+			</div>
+		</div>
+		<!-- container -->
+		<div th:replace="util/fragments::footer_block()"></div>
+
+	</body>
+</html>

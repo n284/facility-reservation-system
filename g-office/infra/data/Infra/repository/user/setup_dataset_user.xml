@@ -1,0 +1,8 @@
+<dataset>
+	<m_user user_id="system1" user_name="システム管理者1" password="pass1" unlock="true" enabled="true" />
+	<m_user user_id="system2" user_name="システム管理者2" password="pass2" unlock="true" enabled="true" />
+
+</dataset>
+
+
+<!-- insert文 -->

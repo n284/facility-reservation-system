@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+.content-confirm {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/*
+ユーザー更新画面用
+*/
+table.user-detail {
+	width: 55%;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 15px -6px #00000073;
+}
+
+table.user-detail tr {
+	border-bottom: solid 2px #f6f6f6;
+}
+
+table.user-detail tr:last-child {
+	border-bottom: none;
+}
+
+table.user-detail th {
+	position: relative;
+	text-align: center;
+	width: 30%;
+	background-color: #4070ad;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+}
+
+table.user-detail th:after {
+	display: block;
+	content: "";
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: calc(50% - 10px);
+	right: -10px;
+	border-left: 10px solid #4070ad;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+}
+
+table.user-detail td {
+	width: 50%;
+	text-align: center;
+	background-color: white;
+	padding: 10px 0;
+}
+
+table.user-detail input {
+	width: 95%;
+}
+
+table.user-detail input[type="radio"] {
+	width: 20px;
+}
+
+table.user-detail input[type="checkbox"] {
+	width: 20px;
+}
+/*
+施設・施設種別更新画面用
+*/
+table.facility-detail {
+	margin-bottom: 5%;
+	width: 55%;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	box-shadow: 0 0 15px -6px #00000073;
+}
+
+table.facility-detail tr {
+	border-bottom: solid 2px #f6f6f6;
+}
+
+table.facility-detail tr:last-child {
+	border-bottom: none;
+}
+
+table.facility-detail th {
+	position: relative;
+	text-align: center;
+	width: 30%;
+	background-color: #4070ad;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+}
+
+table.facility-detail th:after {
+	display: block;
+	content: "";
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: calc(50% - 10px);
+	right: -10px;
+	border-left: 10px solid #4070ad;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+}
+
+table.facility-detail td {
+	width: 50%;
+	text-align: center;
+	background-color: white;
+	padding: 10px 0;
+}
+
+table.facility-detail input {
+	width: 95%;
+}
+
+table.facility-detail input[type="checkbox"] {
+	width: 20px;
+}
+
+table.facility-detail input[type="radio"] {
+	width: 20px;
+}
+
+/*画面中央下部に表示する*/
+.facility-button {
+	position: relative;
+	left: 0;
+	right: 0;
+	text-align: center;
+}

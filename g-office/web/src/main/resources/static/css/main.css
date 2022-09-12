@@ -1,0 +1,603 @@
+@charset "UTF-8";
+
+@import url('./menu/menu.css');
+
+/*ヘッダーフッター*/
+/*システムメッセージ系*/
+/*位置の微調整*/
+
+
+:root {
+	--main-color: #333333;
+	--base-backgroud-color: #f4f8f7 ;/*背景*/
+	--base-button-color: #3966a5;/*メニューのボタン*/
+	--base-table-th-color: #4070ad;
+}
+
+
+body {
+	font-family: 'メイリオ', 'Meiryo', sans-serif;
+	color: var(- -main-color);
+	background-color: var(- -base-backgroud-color);
+	padding: 130px 0 50px 0;
+	cursor:default;
+}
+
+/*
+aタグ
+*/
+a {
+	text-decoration: none;
+	cursor:pointer;
+
+}
+
+/* a:hover { */
+/* 	text-decoration: underline; */
+/* } */
+
+
+
+a.link-block {
+	display: block;
+}
+
+/*
+	セレクトタブ
+*/
+.cp_ipselect {
+	overflow: hidden;
+	width: 20%;
+	margin: 2em auto;
+	text-align: center;
+}
+
+.cp_ipselect select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.cp_ipselect select::-ms-expand {
+	display: none;
+}
+
+.cp_ipselect.cp_sl01 {
+	position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
+}
+
+.cp_ipselect.cp_sl01::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+
+.cp_ipselect.cp_sl01 select {
+	padding: 8px 38px 8px 8px;
+	color: #666666;
+}
+
+/*
+横並びのリストタグ
+*/
+.sidebyside {
+	position: relative;
+	overflow: hidden;
+}
+
+.sidebyside ul {
+	position: relative;
+	left: 50%;
+	float: left;
+}
+
+.sidebyside li {
+	position: relative;
+	left: -50%;
+	float: left;
+	list-style: none;
+}
+
+/*
+システムメッセージ
+*/
+.system-msg {
+	width: 500px;
+	text-align: center;
+	color: rgb(255, 0, 0);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+	margin-bottom: 1%;
+}
+
+.system-msg2 {
+	width: 70%;
+	text-align: center;
+	color: rgb(0, 0, 0);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+}
+
+.completion-message {
+	font-size: 20pt;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+
+div#container {
+	min-height: calc(100vh - 260px);
+
+	/*
+	min-height: calc(100vh - 40px);
+    position: relative;/* ←相対位置 */
+	/*    padding-bottom: 60px; /* ←フッターの高さを指定 */
+	/*    box-sizing: border-box;
+
+/*
+	margin-top: 30px;
+	min-height: calc(100vh - 70px);
+	margin-bottom: -70px;
+*/
+	/*	position: relative; /*←相対位置*/
+	/*	padding-bottom: 120px; /*←footerの高さ*/
+	/*	box-sizing: border-box; /*←全て含めてmin-height:100vhに*/
+}
+
+/*
+ヘッダー
+*/
+div#header {
+	padding-top: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+    height: 17%;
+    width: 100%;
+
+	background: linear-gradient(70deg, #255890, #0000a0);
+	color: #ffffff;
+	position: fixed !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 101%;
+	z-index: 5;
+}
+
+div#title {
+	font-size: 25pt;
+	width: 100%;
+	position: relative;
+}
+
+div#header-menu /*ユーザー名とログアウトボタンのセット*/ {
+	position: relative;
+	left: 30;
+}
+
+div#account {
+	font-size: 15pt;
+	width: 50%;
+	padding-right: 30px; /*こんにちはとログアウトの距離*/
+	float: right;
+	text-align: right;
+}
+
+div#logout {
+	font-size: 15pt;
+	text-align:center;
+	float: right;
+}
+
+div#screenname {
+	font-size: 16pt;
+	display: inline-block;
+	padding-left: 30px;
+	width: 50%;
+	position: relative;
+	bottom:3px;
+}
+
+div#logout a:link {
+	color: #ffffff;
+}
+
+div#logout a:visited {
+	color: #ffffff;
+}
+
+
+.header-button{
+
+	position:relative;
+	bottom:30px;
+}
+
+ /*
+div button logout
+ヘッダーのボタンの為、button.cssではなくこちらに記載
+*/
+.btn-animation-logout {
+	height: 25px;
+	width: 100px;
+	text-align: center;
+	background-color: #0000a0;
+	border: 1px solid #0000a0;
+	font-size: 11px;
+	color: #0000a0;
+	text-decoration: none;
+	border-radius: 1px;
+	position: relative;
+	bottom:3px;
+cursor:pointer;
+}
+
+.btn-animation-logout span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-logout::before, .btn-animation-logout::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;}
+
+.btn-animation-logout::before {
+	left: 0;
+}
+
+.btn-animation-logout::after {
+	right: 0;
+}
+
+.btn-animation-logout:hover:before, .btn-animation-logout:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-logout:hover {
+	color: white;
+}
+
+
+
+
+
+
+/*
+フッター
+*/
+div#footer {
+	height: 8%;
+	width: 100%;
+	margin-left: 0%;
+	margin-right: 0%;
+	background-color: #8a9496;
+	color: #fff;
+	text-align: center;
+	position: fixed !important;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 5;
+}
+
+div#footer p {
+	vertical-align: middle;
+}
+
+/*
+table ダイアログ
+*/
+table#dia {
+	border-collapse: collapse;
+	margin: 0 auto;
+	padding: 0;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 0px 0px #00000073;
+}
+
+table#dia tr {
+	background-color: white;
+	width: auto;
+}
+
+table#dia th, table#dia td {
+	padding: 20px 0;
+	border-bottom: 0px solid #eee;
+	width: auto;
+}
+
+table#dia  th {
+	width: auto;
+	padding: 10px 0;
+	font-size: 18px;
+	padding: 15px;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(50, 50, 50);
+}
+
+table#dia tr {
+	text-align: center;
+	width: auto;
+	padding: 20px 0;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(50, 50, 50);
+}
+
+table#dia td:hover {
+	background-color: #ffffff;
+}
+
+#return-display {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/*ダイアログ*/
+#mask {
+	background: rgba(0, 0, 0, 0.25);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 9;
+}
+
+#modal {
+	background: #fcfdfd;
+	color: #555;
+	width: 600px;
+	padding: 40px;
+	border-radius: 4px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	margin: 0 auto;
+	z-index: 10;
+	transition: 0.4s;
+}
+
+#modal p {
+	text-align: center;
+}
+
+#mask.hidden {
+	display: none;
+}
+
+#modal.hidden {
+	transform: translate(0, -500px);
+	visibility:hidden
+}
+
+/*フッターとの距離調整用*/
+.bottom{
+	margin-bottom: 20px;
+}
+
+
+/*画面中央下部に表示する*/
+.bottombutton{
+	position: fixed;
+	bottom:35%;
+	padding-left:40%;
+	text-align: center;
+ }
+
+ .bottom a:hover {
+	text-decoration: underline;
+}
+
+ /*完了画面のメッセージ*/
+.completemessage{
+	font-size: 20pt;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom:55%;
+	text-align: center;
+ }
+
+.adjustment{
+	margin-top:-50px;
+}
+
+/*更新ダイアログ用*/
+#mask1 {
+	background: rgba(0, 0, 0, 0.25);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 9;
+}
+
+#modal1 {
+	background: #fcfdfd;
+	color: #555;
+	width: 600px;
+	padding: 40px;
+	border-radius: 4px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	margin: 0 auto;
+	z-index: 10;
+	transition: 0.4s;
+}
+
+#modal1 p {
+	text-align: center;
+}
+
+#mask1.hidden {
+	display: none;
+}
+
+#modal1.hidden {
+	transform: translate(0, -500px);
+	visibility:hidden
+}
+
+table#dia1 {
+	border-collapse: collapse;
+	margin: 0 auto;
+	padding: 0;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 0px 0px #00000073;
+}
+
+table#dia1 tr {
+	background-color: white;
+	width: auto;
+}
+
+table#dia1 th, table#dia1 td {
+	padding: 20px 0;
+	border-bottom: 0px solid #eee;
+	width: auto;
+}
+
+table#dia1  th {
+	width: auto;
+	padding: 10px 0;
+	font-size: 18px;
+	padding: 15px;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(50, 50, 50);
+}
+
+table#dia1 tr {
+	text-align: center;
+	width: auto;
+	padding: 20px 0;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(50, 50, 50);
+}
+
+table#dia1 td:hover {
+	background-color: #ffffff;
+}
+
+/*完了ダイアログ用*/
+
+/*更新ダイアログ用*/
+#mask2 {
+	background: rgba(0, 0, 0, 0.25);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 9;
+}
+
+#modal2 {
+	background: #fcfdfd;
+	color: #555;
+	width: 600px;
+	padding: 40px;
+	border-radius: 4px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	margin: 0 auto;
+	z-index: 10;
+	transition: 0.4s;
+}
+
+#modal2 p {
+	text-align: center;
+}
+
+#mask2.hidden {
+	display: none;
+}
+
+#modal2.hidden {
+	transform: translate(0, -500px);
+	visibility:hidden
+}
+
+table#dia2 {
+	border-collapse: collapse;
+	margin: 0 auto;
+	padding: 0;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 0px 0px #00000073;
+}
+
+table#dia2 tr {
+	background-color: white;
+	width: auto;
+}
+
+table#dia2 th, table#dia2 td {
+	padding: 20px 0;
+	border-bottom: 0px solid #eee;
+	width: auto;
+}
+
+table#dia2  th {
+	width: auto;
+	padding: 10px 0;
+	font-size: 18px;
+	padding: 15px;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(50, 50, 50);
+}
+
+table#dia2 tr {
+	text-align: center;
+	width: auto;
+	padding: 20px 0;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(50, 50, 50);
+}
+
+table#dia2 td:hover {
+	background-color: #ffffff;
+}
+

@@ -1,0 +1,40 @@
+<dataset>
+	<m_user user_id="sample1" user_name="user1" password="pass1" />
+	<m_user user_id="sample2" user_name="user2" password="pass2" />
+	<m_user user_id="sample3" user_name="user3" password="pass2" />
+	<m_facility  facility_id="1" name="施設名1" capacity="100" facility_type_id="1" insert_date="[SYSDATE]" user_id="user" />
+	<m_facility  facility_id="2" name="施設名2" capacity="100" facility_type_id="2" insert_date="[SYSDATE+1]" user_id="user" />
+	<m_facility  facility_id="3" name="施設名3" capacity="100" facility_type_id="3" insert_date="[SYSDATE+2]" user_id="user" />
+<!-- 	<m_facility_type facility_type_id="1" name="施設種別1" insert_date="[SYSDATE]" user_id="user" fg_delete="0"/> -->
+<!-- 	<m_facility_type facility_type_id="2" name="施設種別2" insert_date="[SYSDATE]" user_id="user" fg_delete="0"/> -->
+<!-- 	<m_facility_type facility_type_id="3" name="施設種別3" insert_date="[SYSDATE]" user_id="user" fg_delete="0"/> -->
+
+	<m_reservation reservation_id="1"
+	start_time="2021-04-05 09:00:00"
+	end_time="2021-04-05 12:00:00"
+	facility_id="1"
+	insert_date="2021-04-01 12:00:00"
+	user_id="sample1" />
+<!-- 	update_date="[null]" -->
+<!-- 	update_user_id="null" /> -->
+
+	<m_reservation reservation_id="2"
+	start_time="2021-04-05 10:00:00"
+	end_time="2021-04-05 12:00:00"
+	facility_id="2"
+	insert_date="2021-04-01 12:00:00"
+	user_id="sample2" />
+<!-- 	update_date="null" -->
+<!-- 	update_user_id="null" /> -->
+
+	<m_reservation reservation_id="3"
+	start_time="2021-04-06 14:00:00"
+	end_time="2021-04-06 21:00:00"
+	facility_id="3"
+	insert_date="2021-04-01 12:00:00"
+	user_id="sample3" />
+<!-- 	update_date="null" -->
+<!-- 	update_user_id="null" /> -->
+
+
+</dataset>

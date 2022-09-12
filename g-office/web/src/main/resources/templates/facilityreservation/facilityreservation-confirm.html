@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/main.css}">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/detail.css}">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/button.css}">
+		<script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+		<script th:src="@{/js/facilityreservation/findFacility.js}" ></script>
+		<title>予約詳細</title>
+	</head>
+	<body>
+
+		<div th:replace="util/fragments::header_block(|予約詳細画面|)"></div>
+
+		<div id="container">
+			<div class="reservation-detail" th:object="${facilityReservationDetailForm.facilityReservationForm}">
+				<div class="reservation-detail-header">
+					<ol>
+						<li th:text="|*{year}年*{month}月*{date}|">
+						<span>
+							<li th:text="*{facilityForm.name}">
+							<li th:text="|*{startTimeHour}:*{startTimeMinute}~*{endTimeHour}:*{endTimeMinute}|">
+						</span>
+					</ol>
+				</div>
+			</div>
+			<div class="bottom" align="center">
+				<a th:href="@{/menu}" class="btn-animation-menu"><span>メニューへ戻る</span></a>
+			</div>
+		</div>
+		<!-- container -->
+		<div th:replace="util/fragments::footer_block()"></div>
+
+	</body>
+</html>

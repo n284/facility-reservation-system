@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/confirm.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/button.css}">
+
+<title th:text="'ユーザー'+${userConfirmForm.btnName}+'内容確認'"></title>
+</head>
+<body>
+
+	<div
+		th:replace="util/fragments::header_block(|ユーザー${userConfirmForm.btnName}内容確認画面|)"></div>
+	<!-- 	<div class="completion-message"><div>ユーザー情報管理</div></div> -->
+
+	<div class="completion-message">以下の内容でよろしいですか？</div>
+	<div id="container">
+
+
+		<form th:action="@{/user/complete}" name="confirm" method="POST"
+			th:object="${userConfirmForm.userForm}">
+
+			<table class="confirm">
+
+				<tr>
+					<th>ログインID</th>
+					<td><input type="hidden" th:field="*{userId}"> <!-- 						<input type="hidden" th:field="*{userId}"> -->
+						<span th:text="*{userId}"></span></td>
+				</tr>
+
+				<tr>
+					<th>ユーザー名</th>
+					<td><input type="hidden" th:field="*{userName}"> <span
+						th:text="*{userName}"></span></td>
+				</tr>
+
+				<tr>
+					<th>システム権限</th>
+					<td><th:block
+							th:each="user, status : ${userConfirmForm.userRoleFormList}">
+							<th:block
+								th:if="${user.roleId == userConfirmForm.userRoleFormList[__${status.index}__].roleId}">
+								<input type="hidden"
+									th:field="${userConfirmForm.userRoleFormList[__${status.index}__].roleId}">
+								<span th:text="${user.roleId}"></span>
+								<br>
+
+							</th:block>
+						</th:block></td>
+				</tr>
+
+				<tr>
+					<th>パスワード</th>
+					<td><input type="hidden" th:field="*{password}"> <th:block
+							th:each="len :${#numbers.sequence(1, #strings.length(userConfirmForm.userForm.password))}">
+							<span>*</span>
+						</th:block></td>
+				</tr>
+
+				<tr>
+					<th>性別</th>
+					<td><input type="hidden" th:field="*{gender}"> <span
+						th:text="*{gender}"></span></td>
+				</tr>
+
+				<tr>
+					<th>生年月日</th>
+					<td><input type="hidden" th:field="*{birthday}"> <span
+						th:text="*{birthday}"></span></td>
+				</tr>
+
+				<tr>
+					<th>電話番号(ハイフンあり)</th>
+					<td><input type="hidden" th:field="*{contact}"> <span
+						th:text="*{contact}"></span></td>
+				</tr>
+
+				<tr>
+					<th>メール</th>
+					<td><input type="hidden" th:field="*{mailAddress}"> <span
+						th:text="*{mailAddress}"></span></td>
+				</tr>
+
+			</table>
+
+			<div class="bottom" align="center">
+				<button th:class="'btn-animation-' + ${userConfirmForm.btnAction}"
+					id="confirm" th:name="${userConfirmForm.btnAction}">
+					<span th:text=${userConfirmForm.btnName}></span>
+				</button>
+				 <a class="btn-animation-menu"
+					th:attr="onClick='history.back()'">
+					<span>戻る</span>
+				</a>
+
+
+			</div>
+		</form>
+
+
+	</div>
+	<!-- container -->
+	<div th:replace="util/fragments::footer_block()"></div>
+
+</body>
+</html>

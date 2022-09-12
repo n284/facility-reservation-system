@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/list.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/button.css}">
+
+<title>ユーザー情報一覧</title>
+</head>
+<body>
+
+
+	<div th:replace="util/fragments::header_block(|ユーザー情報一覧画面	|)"></div>
+	<div id="container">
+
+		<div align="center">
+			<a th:href="@{/user/add}" class="btn-animation-02"><span>新規登録</span></a>
+			<a th:href="@{/menu}" class="btn-animation-menu"><span>メニューへ戻る</span></a>
+		</div>
+		<table class="bottom">
+			<tr>
+				<th>No</th>
+				<th>ログインID</th>
+				<th>ユーザー名</th>
+				<th>システム権限</th>
+			</tr>
+			<tr th:each="user, userStatus : ${userListForm}">
+				<td th:text="${userStatus.count}">1</td>
+				<td class="useId"><a th:text="${user.userId}"
+					th:href="@{/user/detail/{userId}(userId=${user.userId})}">system</a></td>
+				<td th:text="${user.userName}">システム</td>
+
+				<td><th:block th:each="role ,status :${roleList}">
+
+						<span th:if="${user.userId}==${role.userId}"
+							th:text="${role.roleId}"></span>
+					</th:block></td>
+
+
+			</tr>
+		</table>
+	</div>
+	<!-- container -->
+	<div th:replace="util/fragments::footer_block()"></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.ginga.infra.repository.reservation.ReservationRepository">
+	<resultMap type="jp.co.ginga.infra.repository.facility.FacilityEntity" id="facility">
+		<id property="facilityId" column="facility_id" />
+		<result property="name" column="name" />
+		<result property="capacity" column="capacity" />
+	</resultMap>
+
+	<resultMap type="jp.co.ginga.infra.repository.facilityType.FacilityTypeEntity" id="facilityType">
+		<id property="facilityTypeId" column="facility_type_id" />
+		<result property="name" column="name" />
+	</resultMap>
+
+	<resultMap type="jp.co.ginga.infra.repository.reservation.ReservationEntity" id="reservation">
+		<id property="reservationId" column="reservation_id" />
+		<result property="startTime" column="start_time" />
+		<result property="endTime" column="end_time" />
+		<association property="facilityEntity" javaType="jp.co.ginga.infra.repository.facility.FacilityEntity">
+			<id property="facilityId" column="facility_id" />
+			<result property="name" column="name"/>
+		</association>
+	</resultMap>
+
+	<select id="findAllFacility" resultMap="facility">
+		SELECT
+		m_facility.facility_id
+		, m_facility.name
+		, m_facility.capacity
+
+		FROM m_facility
+		ORDER BY m_facility.insert_date ASC
+		;
+	</select>
+
+	<select id="findAllFacilityType" resultMap="facilityType">
+		SELECT
+		m_facility_type.facility_type_id
+		, m_facility_type.name
+
+		FROM m_facility_type
+		ORDER BY m_facility_type.insert_date ASC
+		;
+	</select>
+
+	<select id="findByYearAndMonth" resultMap="reservation">
+		SELECT
+			reservation_id,
+			start_time,
+			end_time
+		FROM m_reservation
+		WHERE
+			facility_id = #{facilityId} AND
+			start_time between to_timestamp('#{year}-#{month}', 'YYYY-MM') and to_timestamp('#{year}-(#{month}+1)', 'YYYY-MM')
+			AND
+			end_time between to_timestamp('#{year}-#{month}', 'YYYY-MM') and to_timestamp('#{year}-(#{month}+1)', 'YYYY-MM')
+		ORDER BY start_time ASC
+		;
+	</select>
+
+	<select id="findByFacilityReservationId" resultMap="reservation">
+		SELECT
+			m_reservation.reservation_id,
+			m_reservation.start_time,
+			m_reservation.end_time,
+			m_facility.facility_id,
+			m_facility.name
+		FROM m_reservation
+		INNER JOIN m_facility
+			ON m_reservation.facility_id = m_facility.facility_id
+		WHERE m_reservation.reservation_id = #{reservationId}
+	</select>
+
+	<select id="findBydate" resultMap="reservation">
+		SELECT
+			m_reservation.reservation_id,
+			m_reservation.start_time,
+			m_reservation.end_time,
+			m_facility.facility_id,
+			m_facility.name
+		FROM m_reservation
+		INNER JOIN m_facility
+			ON m_reservation.facility_id = m_facility.facility_id
+		WHERE
+			m_reservation.reservation_id = #{reservationId}
+			AND
+			start_time between to_timestamp('#{year}-#{month}-#{date}', 'YYYY-MM-DD') and to_timestamp('#{year}-#{month}-#{date+1}', 'YYYY-MM-DD')
+			AND
+			end_time between to_timestamp('#{year}-#{month}-#{date}', 'YYYY-MM-DD') and to_timestamp('#{year}-#{month}-#{date+1}', 'YYYY-MM-DD')
+	</select>
+
+</mapper>

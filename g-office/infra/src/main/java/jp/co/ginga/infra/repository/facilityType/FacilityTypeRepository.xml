@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.ginga.infra.repository.facilityType.FacilityTypeRepository">
+	<resultMap type="jp.co.ginga.infra.repository.facilityType.FacilityTypeEntity" id="facilityType">
+		<id property="facilityTypeId" column="facility_type_id" />
+		<result property="name" column="name" />
+		<result property="insertDate" column="insert_date" />
+		<result property="updateDate" column="update_date" />
+		<result property="deleteDate" column="delete_date" />
+		<result property="fgDelete" column="fg_delete" />
+		<association property="insertUserEntity" column="insert_user_id" resultMap="user"/>
+		<association property="updateUserEntity"  column="update_user_id" resultMap="user"/>
+		<association property="deleteUserEntity"  column="delete_user_id" resultMap="user"/>
+	</resultMap>
+
+	<resultMap type="jp.co.ginga.infra.repository.user.UserEntity" id="user">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="passUpdateDate" column="pass_update_date" />
+		<result property="gender" column="gender" />
+		<result property="birthday" column="birthday" />
+		<result property="contact" column="contact" />
+		<result property="mailAddress" column="mail_address" />
+		<result property="loginMissTimes" column="login_miss_times" />
+		<result property="unlock" column="unlock" />
+		<result property="enabled" column="enabled" />
+		<result property="userDueDate" column="use_due_date" />
+		<result property="insertDate" column="insert_date" />
+		<result property="updateDate" column="update_date" />
+	</resultMap>
+
+	<select id="findAll" resultMap="facilityType">
+		select
+		facility_type_id
+		, name
+ 		, insert_date
+		, user_id
+		, update_date
+		, update_user_id
+		, delete_date
+		, delete_user_id
+		, fg_delete
+
+		from m_facility_type
+		order by insert_date
+		asc
+		;
+	</select>
+
+	<select id="findOneById" resultMap="facilityType">
+		SELECT
+		facility_type_id
+		, name
+ 		, insert_date
+		, user_id
+		, update_date
+		, update_user_id
+		, delete_date
+		, delete_user_id
+		, fg_delete
+
+		FROM m_facility_type
+		WHERE
+		facility_type_id=#{facilityTypeId}
+		;
+	</select>
+</mapper>

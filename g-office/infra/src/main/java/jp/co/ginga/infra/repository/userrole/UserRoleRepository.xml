@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="jp.co.ginga.infra.repository.userrole.UserRoleRepository">
+
+	<resultMap id="userRoleMap"
+		type="jp.co.ginga.infra.repository.userrole.UserRoleEntity">
+		<!-- <id property="id" column="id" /> -->
+		<id property="userId" column="user_id" />
+		<id property="roleId" column="role_id" />
+		<!-- <id property="roleName" column="role_name" /> -->
+	</resultMap>
+
+
+	<select id="findAll" resultMap="userRoleMap">
+		select
+		<!-- tur.id, -->
+		tur.user_id,
+		tur.role_id
+
+		from
+		t_user_role tur
+
+		<!-- inner join -->
+		<!-- m_role mr -->
+		<!-- on -->
+		<!-- tur.role_id = mr.role_id -->
+
+		order by
+		tur.role_id asc
+		;
+	</select>
+
+
+	<select id="findRoleIdByUserId" resultType="java.util.Map">
+		select
+		ro.role_name as
+		roleName
+
+		from
+		t_user_role tur
+
+		inner join
+		m_role ro
+
+		on
+		tur.role_id =
+		ro.role_id
+
+		where
+		user_id=#{userId}
+	</select>
+
+
+
+	<select id="findByUserId" resultMap="userRoleMap">
+		select
+		<!-- tur.id, -->
+		tur.user_id,
+		tur.role_id
+
+		from
+		t_user_role tur
+
+		<!-- inner join -->
+		<!-- m_role mr -->
+		<!-- on -->
+		<!-- tur.role_id = mr.role_id -->
+
+		where
+		tur.user_id = #{userId}
+
+		order by tur.id asc
+		;
+	</select>
+
+
+	<select id="findByRoleId" resultMap="userRoleMap">
+		select
+		<!-- tur.id, -->
+		tur.user_id,
+		tur.role_id
+
+		from
+		t_user_role tur
+
+		<!-- left outer join -->
+		<!-- m_role mr -->
+		<!-- on -->
+		<!-- tur.role_id = mr.role_id -->
+
+		where
+		tur.role_id = #{roleId}
+
+		order by tur.id asc
+		;
+	</select>
+
+
+	<insert id="insert">
+		insert
+		into
+		t_user_role
+		(
+		user_id
+		,role_id
+		)select
+		#{userId}
+		,#{roleId}
+		where not exists(
+		select user_id, role_id from
+		t_user_role where user_id =
+		#{userId} and role_id =#{roleId})
+		;
+	</insert>
+
+
+	<update id="update">
+		update
+		t_user_role
+		<choose>
+			<when
+				test="afterEntity.userId != null and beforeEntity.userId != null and afterEntity.roleId == null and beforeEntity.roleId == null">
+				set
+				user_id = #{afterEntity.userId}
+				where
+				user_id =
+				#{beforeEntity.userId}
+			</when>
+			<when
+				test="afterEntity.userId == null and beforeEntity.userId == null and afterEntity.roleId != null and beforeEntity.roleId != null">
+				set
+				role_id = #{afterEntity.roleId}
+				where
+				role_id =
+				#{beforeEntity.roleId}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+		<!-- update -->
+		<!-- t_user_role -->
+		<!-- set -->
+
+		<!-- <choose> -->
+		<!-- <when test="afterEntity.userId != beforeEntity.userId "> -->
+		<!-- user_id = #{afterEntity.userId} -->
+		<!-- </when> -->
+		<!-- <when test="afterEntity.roleId != beforeEntity.roleId "> -->
+		<!-- role_id = #{afterEntity.roleId} -->
+		<!-- </when> -->
+		<!-- </choose> -->
+
+		<!-- where -->
+		<!-- id= #{beforeEntity.id} -->
+	</update>
+
+
+	<delete id="delete">
+		delete
+
+		from
+		t_user_role
+
+		where
+		user_id =
+		#{userId}
+		;
+	</delete>
+
+	<delete id="updateDelete">
+		delete
+
+		from
+		t_user_role
+
+		where
+		user_id =
+		#{userId}
+		and
+		role_id!=
+		#{roleId}
+		;
+	</delete>
+</mapper>

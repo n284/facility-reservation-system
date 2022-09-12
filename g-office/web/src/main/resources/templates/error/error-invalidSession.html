@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/button.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/error.css}">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+<title>セッションエラー</title>
+</head>
+<body>
+
+	<div th:replace="util/fragments::header_block(|セッションエラー画面|)"></div>
+	<div id="container">
+<div class="message">
+
+		<div class="error-message">長時間操作が行われなかったため、自動的にログアウトされました</div>
+
+		<div class="error-message">お手数ですが、ログイン画面より再度ログイン手続きを行ってください</div>
+</div>
+
+				<div id="logout" class="bottombutton">
+					<form th:action="@{/logout}" name="logout" method="POST">
+						<button type="submit" class="btn-animation-menu">
+							<span>ログイン画面へ</span>
+						</button>
+					</form>
+				</div>
+	</div>
+
+	<div th:replace="util/fragments::footer_block()"></div>
+
+</body>
+</html>

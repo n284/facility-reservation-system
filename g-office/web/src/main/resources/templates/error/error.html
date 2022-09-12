@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+  th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" media="all"
+  th:href="@{/css/button.css}">
+<link rel="stylesheet" type="text/css" media="all"
+  th:href="@{/css/error.css}">
+
+<title>エラー</title>
+</head>
+<body>
+
+  <div th:replace="util/fragments::header_block(|エラー画面|)"></div>
+  <div id="container">
+
+    <div class="message">
+
+      <div class="error-message">システムエラーが発生しました</div>
+
+      <div class="error-message">お手数ですが、管理者にお問い合わせください</div>
+
+      <div style="color:red"
+         class="error-message">※予期せぬ例外の場合はEclipseのコンソールから例外を判別して処理をしてください
+      </div>
+
+    </div>
+
+    <div class="bottombutton">
+      <a th:href="@{/menu}" class="btn-animation-menu"><span>メニュー画面へ戻る</span></a>
+    </div>
+
+    <div id="footer">
+      <p class="copyright">(C) 2020 Ginga Software, All Rights
+        Reserved..</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

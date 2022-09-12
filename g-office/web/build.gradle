@@ -1,0 +1,51 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'jp.co.ginga.web'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    //thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	//Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//validation ※Spring Boot 2.3以上だと追記が必要
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//Spring AOP
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	//Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	//spring dev tool
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.modelmapper:modelmapper:2.3.0'
+	//mybatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+
+    compile group: 'org.webjars', name: 'jquery', version: '3.3.1'
+	compile 'org.webjars:jquery-ui:1.12.1'
+}
+
+test {
+	useJUnitPlatform()
+}

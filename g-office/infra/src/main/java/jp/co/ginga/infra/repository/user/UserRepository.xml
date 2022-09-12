@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="jp.co.ginga.infra.repository.user.UserRepository">
+	<resultMap
+		type="jp.co.ginga.infra.repository.user.UserEntity" id="user">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="passUpdateDate" column="pass_update_date" />
+		<result property="gender" column="gender" />
+		<result property="birthday" column="birthday" />
+		<result property="contact" column="contact" />
+		<result property="mailAddress" column="mail_address" />
+		<result property="loginMissTimes" column="login_miss_times" />
+		<result property="unlock" column="unlock" />
+		<result property="enabled" column="enabled" />
+		<result property="userDueDate" column="use_due_date" />
+		<result property="insertDate" column="insert_date" />
+		<result property="updateDate" column="update_date" />
+	</resultMap>
+	<select id="findAll" resultMap="user">
+		select
+		user_id
+		, user_name
+		,
+		password
+		, pass_update_date
+		, gender
+		, birthday
+		, contact
+		,
+		mail_address
+		,
+		login_miss_times
+		, unlock, tenant_id
+		, enabled,
+		user_due_date
+		,
+		insert_date, update_date
+
+		from m_user
+		order by insert_date
+		asc
+	</select>
+
+	<select id="findByUserId" resultMap="user">
+		select
+		user_id
+		, user_name
+		,
+		password
+		, pass_update_date
+		, gender
+		, birthday
+		, contact
+		,
+		mail_address
+		,
+		login_miss_times
+		, unlock
+		, tenant_id
+		, enabled
+		,
+		user_due_date
+		,
+		insert_date
+		, update_date
+
+		from public.m_user
+		where
+		user_id=#{userId};
+	</select>
+
+	<select id="getUserIdByUserId" resultMap="user">
+		select
+		user_id
+		,
+		user_name
+		,
+		password
+		, pass_update_date
+		, gender
+		, birthday
+		,
+		contact
+		,
+		mail_address
+		,
+		login_miss_times
+		, unlock
+		, tenant_id
+		, enabled
+		,
+		user_due_date
+		,
+		insert_date
+		, update_date
+
+		from public.m_user
+		where
+		user_id=#{userId};
+
+	</select>
+
+	<insert id="insert">
+		insert into m_user (
+		user_id
+		, user_name
+		, password
+		,
+		pass_update_date
+		, gender
+		, birthday
+		, contact
+		, mail_address
+		,
+		login_miss_times
+		, unlock
+		, enabled
+		, user_due_date
+		,
+		insert_date
+		) values (
+		#{userId}
+		, #{userName}
+		, #{password}
+		, #{passUpdateDate}
+		, #{gender}
+		,
+		#{birthday}
+		, #{contact}
+		, #{mailAddress}
+		, #{loginMissTimes}
+		, #{unlock}
+		, #{enabled}
+		, #{userDueDate}
+		, NOW()
+		)
+
+	</insert>
+	<update id="update">
+		update m_user set
+		<if test="userName != null">
+			user_name=#{userName},
+		</if>
+		<if test="password != null">
+			password=#{password},
+		</if>
+		<if test="passUpdateDate != null">
+			pass_update_date=NOW(),
+		</if>
+		<if test="gender != null">
+			gender=#{gender},
+		</if>
+		<if test="birthday != null">
+			birthday=#{birthday},
+		</if>
+		<if test="contact != null">
+			contact=#{contact},
+		</if>
+		<if test="mailAddress != null">
+			mail_address=#{mailAddress},
+		</if>
+		unlock=#{unlock},
+		enabled=#{enabled},
+		<if test="userDueDate != null">
+			user_due_date=#{userDueDate},
+		</if>
+		update_date=NOW()
+
+		where user_id=#{userId}
+
+	</update>
+	<update id="updateUnlock">
+		update m_user set
+		unlock=#{unlock}
+		,update_date=NOW()
+		where user_id=#{userId}
+	</update>
+
+	<update id="updateEnabled">
+		update m_user set
+		enabled=#{enabled}
+		,
+		update_date=NOW()
+
+		where user_id=#{userId}
+	</update>
+
+	<delete id="delete">
+		delete from m_user
+		where user_id = #{userId};
+	</delete>
+
+</mapper>

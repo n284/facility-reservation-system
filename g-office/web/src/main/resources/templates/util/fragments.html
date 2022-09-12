@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<title>Fragments</title>
+</head>
+<body>
+	<!-- ヘッダー -->
+	<div th:fragment="header_block(page)" th:remove="tag">
+		<div id="header">
+			<div id="title" >施設予約管理システム</div>
+			<!-- 画面名 -->
+			<div id="screenname">
+				<span th:text="${page}"></span>
+			</div>
+			<!-- header-menu -->
+			<div id="header-menu" sec:authorize="isAuthenticated()">
+
+				<div class="header-button">
+					<!-- logout -->
+					<div id="logout">
+						<form th:action="@{/logout}" name="logout" method="POST">
+							<button type="submit" class="btn-animation-logout">
+								<span>ログアウト</span>
+							</button>
+						</form>
+					</div>
+
+					<!-- account -->
+					<div id="account">
+						<span sec:authentication="principal.appUserName"></span>さん こんにちは
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- header -->
+	</div>
+	<!-- header_block(pageName) -->
+
+	<!-- フッター -->
+	<div th:fragment="footer_block()" th:remove="tag">
+		<div id="footer">
+			<p>© 2020 ginga software</p>
+		</div>
+		<!-- footer -->
+	</div>
+	<!-- footer_block -->
+</body>
+</html>

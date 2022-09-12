@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+
+
+<title>メニュー</title>
+</head>
+<body>
+
+	<div th:replace="util/fragments::header_block(|メニュー画面|)"></div>
+	<div class="completion-message">機能を選択してください。</div>
+
+	<div id="container">
+
+		<div class="col_3" align="center">
+			<div class="col">
+				<a th:href="@{/facilityreservation/list}">施設予約管理</a>
+			</div>
+			<div class="col" sec:authorize="hasRole('ROLE_ADMIN')">
+				<a th:href="@{/facility/list}">施設情報管理</a>
+			</div>
+			<div class="col" sec:authorize="hasRole('ROLE_ADMIN')">
+				<a th:href="@{/user/list}">ユーザー情報管理</a>
+			</div>
+			<div class="col" sec:authorize="hasRole('ROLE_ADMIN')">
+				<a th:href="@{/facilitytype/list}">施設種別情報管理</a>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- container -->
+	<div th:replace="util/fragments::footer_block()"></div>
+
+</body>
+</html>

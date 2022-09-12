@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+@import url('./menu/menu.css');
+
+/*
+table
+*/
+table {
+	border-collapse: collapse;
+	margin-top: 30px;
+	padding: 5px;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 15px -6px #00000073;
+}
+
+table a{
+	display:block;
+	padding:15px 0;
+
+}
+
+table tr {
+	background-color: white;
+	width: auto;
+}
+
+table tr th{
+	background-color: #4070ad;
+	width: auto;
+}
+
+table th, table td {
+
+	border-bottom: 1px solid #eee;
+	width: auto;
+}
+
+table  th {
+	width: auto;
+	padding: 10px 0;
+	font-size: 18px;
+	padding: 15px;
+	background-color: var(- -base-table-th-color);
+	color: white;
+}
+
+table tr {
+	text-align: center;
+	width: auto;
+	padding: 20px 0;
+	background-color: white;
+	color: var(- -main-color);
+}
+
+table td a:hover {
+	background-color: #d4faff;
+}
+
+
+
+div#container {
+	min-height: calc(100vh - 260px);
+
+	/*
+	min-height: calc(100vh - 40px);
+    position: relative;/* ←相対位置 */
+	/*    padding-bottom: 60px; /* ←フッターの高さを指定 */
+	/*    box-sizing: border-box;
+
+/*
+	margin-top: 30px;
+	min-height: calc(100vh - 70px);
+	margin-bottom: -70px;
+*/
+	/*	position: relative; /*←相対位置*/
+	/*	padding-bottom: 120px; /*←footerの高さ*/
+	/*	box-sizing: border-box; /*←全て含めてmin-height:100vhに*/
+}
+
+
+
+

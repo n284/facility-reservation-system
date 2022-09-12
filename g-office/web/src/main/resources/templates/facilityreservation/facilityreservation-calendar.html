@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/main.css}">
+		<link rel="stylesheet" type="text/css" media="all"
+			th:href="@{/css/button.css}">
+		<link rel="stylesheet" type="text/css" media="all"
+		th:href="@{/css/calendar/calendar.css}">
+		<script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+		<script th:src="@{/js/facilityreservation/calendar/calendar.js}" ></script>
+		<title>予約状況詳細</title>
+	</head>
+	<body>
+
+		<div th:replace="util/fragments::header_block(|予約状況詳細画面|)"></div>
+
+		<div id="container">
+			<div class="calendar-header">
+				<p id="info" th:text="|施設名：${facilityReservationCalendarForm.facilityForm.name}|"></p>
+				<input id="facilityId" type="hidden" th:value="${facilityReservationCalendarForm.facilityForm.facilityId}">
+				<div class="select-box">
+					<select class="year-month" id="year">
+						<th:block th:each="i : ${#numbers.sequence(0, 20)}">
+							<option th:if="${i+2010} == ${facilityReservationCalendarForm.year}" selected th:value="${i+2010}" th:text="|${i+2010}年|">
+							<option th:if="${i+2010} != ${facilityReservationCalendarForm.year}" th:value="${i+2010}" th:text="|${i+2010}年|">
+						</th:block>
+					</select>
+					<select class="year-month" id="month">
+						<th:block th:each="i : ${#numbers.sequence(1, 12)}">
+							<option th:if="${i} == ${facilityReservationCalendarForm.month}" selected th:value="${i}" th:text="|${i}月|">
+							<option th:if="${i} != ${facilityReservationCalendarForm.month}" th:value="${i}" th:text="|${i}月|">
+						</th:block>
+					</select>
+				</div>
+				<div class="bottom" align="center">
+					<button type="button" class="btn-animation-before button"  name="before">
+						<span>前月</span>
+					</button>
+					<button type="button" class="btn-animation-current button" name="current">
+						<span>今月</span>
+					</button>
+					<button type="button" class="btn-animation-next button" name="next">
+						<span>次月</span>
+					</button>
+
+				</div>
+			</div>
+			<div class="calendar-page">
+				<table>
+					<tr>
+						<th class="sunday">日</th>
+						<th>月</th>
+						<th>火</th>
+						<th>水</th>
+						<th>木</th>
+						<th>金</th>
+						<th class="saturday">土</th>
+					</tr>
+					<th:block th:each="i : ${#numbers.sequence(0,5)}">
+						<tr>
+							<td class="sunday" th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${0+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0">-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:href="@{/facilityreservation/detail/{reservationId} (reservationId=${reservation.reservationId})}" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+
+							</td>
+							<td  th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${1+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0" >-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:href="@{/facilityreservation/detail/{reservationId}(reservationId=${reservation.reservationId})}" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+							</td>
+							<td  th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${2+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0" >-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+							</td>
+							<td th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${3+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0" >-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:href="@{/facilityreservation/detail/{reservationId}(reservationId=${reservation.reservationId})}" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+							</td>
+							<td th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${4+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0" >-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:href="@{/facilityreservation/detail/{reservationId}(reservationId=${reservation.reservationId})}" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+							</td>
+							<td  th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${5+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0" >-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:href="@{/facilityreservation/detail/{reservationId}(reservationId=${reservation.reservationId})}" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+							</td>
+							<td class="saturday" th:object="${facilityReservationCalendarForm.calendarMonthForm.calendarDayFormList[__${6+i*7}__]}">
+								<p class="date date-data info" th:if="*{date} != 0" th:text="*{date}"></p>
+								<p class="date date-data info" th:if="*{date} == 0" >-</p>
+								<th:block th:if="*{facilityReservationFormList} != null" th:each="reservation, status : *{facilityReservationFormList}">
+									<a class="time" th:href="@{/facilityreservation/detail/{reservationId}(reservationId=${reservation.reservationId})}" th:text="|${reservation.startTimeHour}:${reservation.startTimeMinute}~${reservation.endTimeHour}:${reservation.endTimeMinute}|"></a>
+								</th:block>
+								<form th:action="@{/facilityreservation/add/{facilityId}/ (facilityId=${facilityReservationCalendarForm.facilityForm.facilityId})}" method="GET" th:if="*{date} != 0">
+									<input type="hidden" name="year" th:value="${facilityReservationCalendarForm.year}">
+									<input type="hidden" name="month" th:value="${facilityReservationCalendarForm.month}">
+									<input type="hidden" name="year" th:value="*{date}">
+									<button class="add" type="submit"></button>
+								</form>
+							</td>
+						</tr>
+					</th:block>
+				</table>
+			</div>
+		</div>
+		<!-- container -->
+		<div th:replace="util/fragments::footer_block()"></div>
+
+	</body>
+</html>

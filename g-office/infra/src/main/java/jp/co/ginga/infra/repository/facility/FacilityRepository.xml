@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.ginga.infra.repository.facility.FacilityRepository">
+	<resultMap type="jp.co.ginga.infra.repository.facility.FacilityEntity" id="facility">
+		<id property="facilityId" column="facility_id" />
+		<result property="name" column="facility_name" />
+		<result property="capacity" column="capacity" />
+		<result property="insertDate" column="insert_date"/>
+		<result property="updateDate" column="update_date"/>
+
+		<association property="facilityTypeEntity" javaType="jp.co.ginga.infra.repository.facilityType.FacilityTypeEntity" >
+			<id property="facilityTypeId" column="facility_type_id" />
+			<result property="name" column="facility_type_name" />
+		</association>
+		<association property="insertUserEntity" javaType="jp.co.ginga.infra.repository.user.UserEntity">
+			<id property="userId" column="user_id"/>
+			<result property="userName" column="user_name"/>
+		</association>
+		<association property="updateUserEntity" javaType="jp.co.ginga.infra.repository.user.UserEntity">
+			<id property="userId" column="update_user_id"/>
+			<result property="userName" column="user_name"/>
+		</association>
+	</resultMap>
+
+	<select id="findAll" resultMap="facility">
+		SELECT
+		m_facility.facility_id
+		, m_facility.name AS facility_name
+		, m_facility.capacity
+		, m_facility_type.facility_type_id
+		, m_facility_type.name AS facility_type_name
+		, m_facility.insert_date
+		, m_facility.user_id
+		, m_facility.update_date
+		, m_facility.update_user_id
+
+		FROM m_facility
+		LEFT OUTER JOIN m_facility_type ON m_facility.facility_type_id = m_facility_type.facility_type_id
+		ORDER BY m_facility.insert_date
+		ASC
+		;
+	</select>
+
+	<select id="findByName" resultMap="facility">
+		SELECT
+		facility_id
+		, name AS facility_name
+		, capacity
+		, facility_type_id
+		, insert_date
+		, user_id
+		, update_date
+		, update_user_id
+
+		FROM m_facility
+
+		WHERE
+		#{name} = name
+		;
+	</select>
+
+	<select id="findByFacilityId" resultMap="facility">
+		SELECT
+		facility_id
+		, name AS facility_name
+		, capacity
+		, facility_type_id
+		, insert_date
+		, user_id
+		, update_date
+		, update_user_id
+
+		FROM m_facility
+
+		WHERE
+		#{facilityId} = facility_id
+		;
+	</select>
+
+	<select id="findByFacilityTypeId" resultMap="facility">
+		SELECT
+		facility_id
+		, name AS facility_name
+		, capacity
+		, facility_type_id
+		, insert_date
+		, user_id
+		, update_date
+		, update_user_id
+
+		FROM m_facility
+
+		WHERE
+		#{facilityTypeEntity.facilityTypeId} = facility_type_id
+		;
+	</select>
+
+	<insert id="insert">
+		INSERT INTO m_facility (
+		<if test="facilityId != 0">
+		facility_id,
+		</if>
+		 name
+		, capacity
+		, facility_type_id
+		, insert_date
+		, user_id
+		<if test="updateDate != null">
+		, update_date
+		</if>
+		<if test="updateUserEntity != null">
+		, update_user_id
+		</if>
+		)
+		VALUES(
+		<if test="facilityId != 0">
+		#{facilityId},
+		</if>
+		 #{name}
+		, #{capacity}
+		, #{facilityTypeEntity.facilityTypeId}
+		<if test="insertDate != null">
+			,#{insertDate}
+		</if>
+		<if test="insertDate == null">
+			,NOW()
+		</if>
+		, #{insertUserEntity.userId}
+		<if test="updateDate != null">
+			,#{updateDate}
+		</if>
+		<if test="updateUserEntity != null">
+			,#{updateUserEntity.userId}
+		</if>
+		)
+		;
+	</insert>
+
+	<update id="update">
+		UPDATE m_facility SET
+		<if test="name != null">
+			name=#{name},
+		</if>
+		<if test="capacity != null">
+			capacity=#{capacity},
+		</if>
+		<if test="facilityTypeEntity != null">
+			facility_type_id=#{facilityTypeEntity.facilityTypeId},
+		</if>
+		<if test="updateDate == null">
+		update_date=NOW(),
+		</if>
+		<if test="updateDate != null">
+		update_date=#{updateDate},
+		</if>
+
+		update_user_id=#{updateUserEntity.userId}
+
+		WHERE
+		facility_id=#{facilityId}
+		;
+	</update>
+
+	<delete id="delete">
+		DELETE FROM m_facility
+
+		WHERE
+		facility_id = #{facilityId}
+		;
+	</delete>
+</mapper>

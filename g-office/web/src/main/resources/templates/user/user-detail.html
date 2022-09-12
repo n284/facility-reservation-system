@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/detail.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/button.css}">
+
+<!-- jQueryの読み込み -->
+<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+
+<!-- jQueryUiの読み込み -->
+<script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<link rel="stylesheet"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+
+<title>ユーザー詳細</title>
+</head>
+<body>
+
+	<script type="text/javascript" th:src="@{/js/user/userRole.js}"></script>
+
+	<div th:replace="util/fragments::header_block(|ユーザー更新画面|)"></div>
+
+	<div id="container">
+
+
+		<form th:action="@{/user/confirm}" name="update" method="POST"
+			th:object="${userDetailForm}">
+
+			<div class="system-msg">
+				<span th:errors="${userDetailForm.sysMsg}">システムメッセージ</span>
+			</div>
+
+			<div id="hiddenData"
+				th:each="userRole, userRoleStatus : *{userRoleFormList}">
+				<input type="hidden" th:class="userRole"
+					th:value="${userRole.roleId}">
+			</div>
+
+
+			<table class="user-detail">
+
+				<tr>
+					<th>ログインID</th>
+					<td><input type="hidden" th:field="*{userForm.userId}">
+						<span th:text="*{userForm.userId}"></span></td>
+				</tr>
+
+				<tr>
+					<th>ユーザー名<span class="system-msg">※</span></th>
+					<td><span th:if="${#fields.hasErrors('userForm.userName')}"
+						th:errors="*{userForm.userName}" class="system-msg">haserror</span>
+						<input type="text" th:field="*{userForm.userName}"></td>
+				</tr>
+
+				<tr>
+					<th>システム権限<span class="system-msg">※</span></th>
+					<td id="role"><th:block
+							th:each="role, status : ${userDetailForm.roleFormList}">
+							<input type="checkbox" th:id="${role.roleId}" class="role"
+								th:field="${userDetailForm.roleFormList[__${status.index}__].roleId}"
+								th:value="${role.roleId}" th:text="${role.roleId}" />
+						</th:block></td>
+				</tr>
+
+				<tr>
+					<th>パスワード<span class="system-msg">※</span></th>
+					<td><span class="system-msg" th:errors="*{userForm.password}"></span>
+						<input type="password" th:id="password"
+						th:field="*{userForm.password}"></td>
+				</tr>
+				<tr>
+					<th>パスワード（確認）<span class="system-msg">※</span></th>
+					<td><span id="password-check"></span> <input type="password"
+						th:id="retypePassword" th:field="*{userForm.retypePassword}"></td>
+				</tr>
+
+
+				<tr>
+					<th>性別</th>
+					<td><input type="radio" th:field="*{userForm.gender}"
+						th:value="男" th:text="男" /> <input type="radio"
+						th:field="*{userForm.gender}" th:value="女" th:text="女" /> <input
+						type="radio" th:field="*{userForm.gender}" th:value="どちらでもない"
+						th:text="どちらでもない" /></td>
+				</tr>
+
+				<tr>
+					<th>生年月日</th>
+					<td><span class="system-msg" th:errors="*{userForm.birthday}"></span>
+						<input type="date" th:field="*{userForm.birthday}"></td>
+				</tr>
+
+				<tr>
+					<th>電話番号(ハイフンあり)</th>
+					<td><span class="system-msg" th:errors="*{userForm.contact}"></span>
+						<input type="text" th:field="*{userForm.contact}"></td>
+				</tr>
+
+				<tr>
+					<th>メール</th>
+					<td><span class="system-msg"
+						th:errors="*{userForm.mailAddress}"></span> <input type="text"
+						th:id="mailAddress" th:field="*{userForm.mailAddress}"></td>
+				</tr>
+				<tr>
+					<th>メール（確認）</th>
+					<td><span id="address-check"></span> <input type="text"
+						th:id="retypeMailAddress" th:field="*{userForm.retypeMailAddress}"></td>
+				</tr>
+
+			</table>
+
+			<div class="bottom" align="center">
+				<button type="submit" class="btn-animation-update" id="confirm"
+					name="update">
+					<span>更新</span>
+				</button>
+				<button type="submit" class="btn-animation-delete" id="confirm"
+					name="delete">
+					<span>削除</span>
+				</button>
+				<a class="btn-animation-menu" onClick="location.href='/user/list'"><span>戻る</span></a>
+
+			</div>
+		</form>
+
+	</div>
+	<!-- container -->
+	<div th:replace="util/fragments::footer_block()"></div>
+
+	<!-- jsファイルの読み込み -->
+	<script type="text/javascript" th:src="@{/js/user/userRetype.js}"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+@charset "UTF-8";
+
+@import url('./menu/menu.css');
+
+/*
+div button
+*/
+.btn-animation-02 {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #7dad4c;
+	border: 1px solid #7dad4c;
+	font-size: 16px;
+	color: #7dad4c;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-02 span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-02::before, .btn-animation-02::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+}
+
+.btn-animation-02::before {
+	left: 0;
+}
+
+.btn-animation-02::after {
+	right: 0;
+}
+
+.btn-animation-02:hover:before, .btn-animation-02:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-02:hover {
+	color: white;
+}
+
+#prev {
+	cursor: pointer;
+}
+
+/*
+div button cofirm
+*/
+.btn-animation-cofirm {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #c9282e;
+	border: 1px solid #c9282e;
+	font-size: 16px;
+	color: #c9282e;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-cofirm span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-cofirm::before {
+	left: 0;
+	background-color: #c9282e;
+}
+
+.btn-animation-cofirm::after {
+	right: 0;
+	background-color: #c9282e;
+}
+
+.btn-animation-cofirm:hover::before, .btn-animation-cofirm:hover::after
+	{
+	width: 0;
+	background-color: #c9282e;
+}
+
+.btn-animation-cofirm:hover {
+	color: white;
+	background-color: #c9282e;
+	transition: .2s;
+}
+/*.btn-animation-cofirm {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #ff8080;
+	border: 2px solid #ff8080;
+	font-size: 16px;
+	color: #ff8080;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+}
+
+.btn-animation-cofirm span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-cofirm::before, .btn-animation-cofirm::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+}
+
+.btn-animation-cofirm::before {
+	left: 0;
+}
+
+.btn-animation-cofirm::after {
+	right: 0;
+}
+
+.btn-animation-cofirm:hover:before, .btn-animation-cofirm:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-cofirm:hover {
+	color: white;
+}*/
+
+/*
+div button submit
+*/
+.btn-animation-submit {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #c9282e;
+	border: 1px solid #c9282e;
+	font-size: 16px;
+	color: #c9282e;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-submit span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-submit div {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-submit::before, .btn-animation-submit::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+}
+
+.btn-animation-submit::before {
+	left: 0;
+}
+
+.btn-animation-submit::after {
+	right: 0;
+}
+
+.btn-animation-submit:hover:before, .btn-animation-submit:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-submit:hover {
+	color: white;
+}
+
+#current {
+	cursor: pointer;
+}
+
+/*
+div button complete
+*/
+.btn-animation-complete {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #ffffff;
+	border: 1px solid #ff7070;
+	font-size: 16px;
+	color: #ff7070;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-complete span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-complete::before, .btn-animation-complete::after {
+	content: "";
+	display: block;
+	background-color: #ff7070;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+}
+
+.btn-animation-complete::before {
+	left: 0;
+}
+
+.btn-animation-complete::after {
+	right: 0;
+}
+
+.btn-animation-complete:hover:before, .btn-animation-complete:hover:after
+	{
+	width: 0;
+	background-color: #ff7070;
+}
+
+.btn-animation-complete:hover {
+	color: #ff7070;
+}
+
+/*
+div button menu
+*/
+.btn-animation-menu {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #4c7dad;
+	border: 1px solid #4c7dad;
+	font-size: 16px;
+	color: #4c7dad;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+
+.btn-animation-menu span {
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+}
+
+.bottom a:hover {
+	text-decoration: none;
+}
+
+.btn-animation-menu::before, .btn-animation-menu::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+}
+
+.btn-animation-menu::before {
+	left: 0;
+}
+
+.btn-animation-menu::after {
+	right: 0;
+}
+
+.btn-animation-menu:hover:before, .btn-animation-menu:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-menu:hover {
+	color: white;
+}
+
+#next {
+	cursor: pointer;
+}
+
+/*
+div button delete
+*/
+.btn-animation-delete {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #808080;
+	border: 1px solid #808080;
+	font-size: 16px;
+	color: #808080;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+
+.btn-animation-delete span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-delete::before, .btn-animation-delete::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+.btn-animation-delete::before {
+	left: 0;
+}
+
+.btn-animation-delete::after {
+	right: 0;
+}
+
+.btn-animation-delete:hover:before, .btn-animation-delete:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-delete:hover {
+	color: white;
+}
+
+/*
+div button update
+*/
+.btn-animation-update {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #ff5533;
+	border: 1px solid #ff5533;
+	font-size: 16px;
+	color: #ff5533;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+
+.btn-animation-update span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-update div {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-update::before, .btn-animation-update::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+.btn-animation-update::before {
+	left: 0;
+}
+
+.btn-animation-update::after {
+	right: 0;
+}
+
+.btn-animation-update:hover:before, .btn-animation-update:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-update:hover {
+	color: white;
+}
+
+/*
+div button add
+*/
+.btn-animation-add {
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	background-color: #c9282e;
+	border: 1px solid #c9282e;
+	font-size: 16px;
+	color: #c9282e;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-add span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-add div {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-add::before, .btn-animation-add::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+.btn-animation-add::before {
+	left: 0;
+}
+
+.btn-animation-add::after {
+	right: 0;
+}
+
+.btn-animation-add:hover:before, .btn-animation-add:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-add:hover {
+	color: white;
+	cursor: pointer;
+}
+
+/*
+div button yes
+*/
+.btn-animation-yes {
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+	background-color: #c9282e;
+	border: 1px solid #c9282e;
+	font-size: 16px;
+	color: #c9282e;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-yes span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-yes div {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-yes::before, .btn-animation-yes::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+.btn-animation-yes::before {
+	left: 0;
+}
+
+.btn-animation-yes::after {
+	right: 0;
+}
+
+.btn-animation-yes:hover:before, .btn-animation-yes:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-yes:hover {
+	color: white;
+}
+
+/*
+div button no
+*/
+.btn-animation-no {
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+	background-color: #4c7dad;
+	border: 1px solid #4c7dad;
+	font-size: 16px;
+	color: #4c7dad;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px 24px;
+	border-radius: 4px;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.btn-animation-no span {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-animation-no::before, .btn-animation-no::after {
+	content: "";
+	display: block;
+	background-color: white;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: .2s;
+}
+
+.btn-animation-no::before {
+	left: 0;
+}
+
+.btn-animation-no::after {
+	right: 0;
+}
+
+.btn-animation-no:hover:before, .btn-animation-no:hover:after {
+	width: 0;
+	background-color: white;
+}
+
+.btn-animation-no:hover {
+	color: white;
+}
+
+/*一覧画面のボタンとリストの位置を左寄りに調整*/
+.list-button {
+	position: relative;
+	right: 25%;
+}
+
+.btn-animation-02 a {
+	text-decoration: none;
+}
+
+.btn-animation-02 a:hover {
+	text-decoration: none;
+}
